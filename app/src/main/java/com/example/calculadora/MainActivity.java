@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public TextView displayValue, displayOperation;
-    public String stringValueOne, stringValueTwo;
+    public String stringValueOne, stringValueTwo, operatorString;
     public double valueTotal;
     public int actionOperation;
 
@@ -121,25 +121,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getOperator(){
-        String operatorString = "";
+        this.operatorString = "";
         switch (this.actionOperation) {
             case 1: {
-                operatorString = "+";
+                this.operatorString = "+";
+                break;
             }
             case 2: {
-                operatorString = "-";
+                this.operatorString = "-";
                 break;
             }
             case 3: {
-                operatorString = "*";
+                this.operatorString = "*";
                 break;
-            }case 4: {
-                operatorString = "/";
+            }
+            case 4: {
+                this.operatorString = "/";
                 break;
             }
         }
 
-        return operatorString;
+        return this.operatorString;
     }
 
     public void calculateTotal(){
