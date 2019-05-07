@@ -4,158 +4,166 @@ package com.example.calculadora;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public EditText pant;
-    public double operan1, operan2, res;
-    int ope;
+    public TextView displayValue, displayOperation;
+    public String stringValueOne, stringValueTwo;
+    public double valueTotal;
+    public int actionOperation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pant=(EditTexct)findViewById(R.id.Operacion);
+
+        this.stringValueOne = "";
+        this.stringValueTwo = "";
+        this.actionOperation = 0;
+        displayValue = (TextView) findViewById(R.id.Resultado);
+        displayOperation = (TextView) findViewById(R.id.Operacion);
     }
 
-    public void Uno (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"1";
-        pant.setText(cap);
+    public void buttonActionOne(View view) {
+        this.addValue("1");
     }
 
-    public void bt2 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"2";
-        pant.setText(cap);
-
-    }
-    public void bt3 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"3";
-        pant.setText(cap);
-
-    }
-    public void bt4 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"4";
-        pant.setText(cap);
-
-    }
-    public void bt5 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"5";
-        pant.setText(cap);
-
-    }
-    public void bt6 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"6";
-        pant.setText(cap);
-
-    }
-    public void bt7 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"7";
-        pant.setText(cap);
-
-    }
-    public void bt8 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"8";
-        pant.setText(cap);
+    public void buttonActionTwo(View view) {
+        this.addValue("2");
     }
 
-    public void bt9 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"9";
-        pant.setText(cap);
+    public void buttonActionThree(View view) {
+        this.addValue("3");
     }
 
-    public void bt0 (View v){
-        String cap= pant.getText().toString();
-        cap=cap+"0";
-        pant.setText(cap);
-
+    public void buttonActionFour(View view) {
+        this.addValue("4");
     }
 
-    public void suma(View v){
-        try{
-            String aux1= pant.getText().toString();
-            operan1= Double.parseDouble(aux1);
-        }catch(NumberFormatException nfe){};
-        pant.setText("");
-        ope=1;
+    public void buttonActionFive(View view) {
+        this.addValue("5");
     }
 
-    public void resta(View v){
-        try{
-            String aux1= pant.getText().toString();
-            operan1= Double.parseDouble(aux1);
-        }catch(NumberFormatException nfe){};
-        pant.setText("");
-        ope=2;
-    }
-    public void multiplicacion (View v){
-        try{
-            String aux1= pant.getText().toString();
-            operan1= Double.parseDouble(aux1);
-        }catch(NumberFormatException nfe){};
-        pant.setText("");
-        ope=3;
+    public void buttonActionSix(View view) {
+        this.addValue("6");
     }
 
-    public void division (View v){
-        try{
-            String aux1= pant.getText().toString();
-            operan1= Double.parseDouble(aux1);
-        }catch(NumberFormatException nfe){};
-        pant.setText("");
-        ope=4;
+    public void buttonActionSeven(View view) {
+        this.addValue("7");
     }
 
-    public void igual (View v){
-        try{
-            String aux2= pant.getText().toString();
-            operan2= Double.parseDouble(aux2);
-        }catch(NumberFormatException nfe){};
-        pant.setText("");
+    public void buttonActionEight(View view) {
+        this.addValue("8");
+    }
 
-        if (ope==1){
-            res=operan1+operan2;
+    public void buttonActionNine(View view) {
+        this.addValue("9");
+    }
 
-        }else if (ope==2){
-            res=operan1-operan2;
+    public void buttonActionZero(View view) {
+        this.addValue("0");
+    }
 
-        }else if (ope==3){
-            res=operan1*operan2;
+    public void buttonActionEqual(View view) {
+        this.setValueTwo();
+    }
 
-        }else if (ope==4){
-            if(operan2==0){
-                pant.setText("Numero no se puede dividir para 0");
-            }else{
-                res= operan1/operan2;
+    public void buttonActionErase(View view) {
+        displayValue.setText("");
+        displayOperation.setText("");
+    }
+
+    public void buttonActionAddition(View view) {
+        this.actionOperation = 1;
+        this.setValueOne();
+    }
+
+    public void buttonActionSubtraction(View view) {
+        this.actionOperation = 2;
+        this.setValueOne();
+    }
+
+    public void buttonActionMultiplication(View view) {
+        this.actionOperation = 3;
+        this.setValueOne();
+    }
+
+    public void buttonActionDivision(View view) {
+        this.actionOperation = 4;
+        this.setValueOne();
+    }
+
+    public void addValue(String value) {
+        String actualValue = displayValue.getText().toString();
+
+        actualValue = actualValue + value;
+
+        displayValue.setText(actualValue);
+    }
+
+    public void setValueOne() {
+        try {
+            this.stringValueOne = displayValue.getText().toString();
+            displayValue.setText("");
+            displayOperation.setText(this.stringValueOne + " " + this.getOperator() + " ");
+        } catch (NumberFormatException nfe) {
+        }
+    }
+
+    public void setValueTwo() {
+        try {
+            this.stringValueTwo = displayValue.getText().toString();
+            displayValue.setText("");
+            displayOperation.setText(this.stringValueOne + " " + this.getOperator() + " " + this.stringValueTwo);
+            this.calculateTotal();
+        } catch (NumberFormatException nfe) {
+        }
+    }
+
+    public String getOperator(){
+        String operatorString = "";
+        switch (this.actionOperation) {
+            case 1: {
+                operatorString = "+";
             }
-
+            case 2: {
+                operatorString = "-";
+                break;
+            }
+            case 3: {
+                operatorString = "*";
+                break;
+            }case 4: {
+                operatorString = "/";
+                break;
+            }
         }
-        pant.setText(""+res);
-        operan1=res;
+
+        return operatorString;
     }
 
-    public void clear (View v){
-        pant.setText("");
-        operan1=0.0;
-        operan2=0.0;
-        res=0.0;
-    }
-
-    public void borrar (View v){
-        if (!pant.getText().toString().equals("")){
-            pant.setText(pant.getText().subSequence(0,pant.getText().length()-1)+"");
+    public void calculateTotal(){
+        double valueOne = Double.parseDouble(this.stringValueOne);
+        double valueTwo = Double.parseDouble(this.stringValueTwo);
+        switch (this.actionOperation) {
+            case 1: {
+               this.valueTotal = valueOne + valueTwo;
+                break;
+            }
+            case 2: {
+                this.valueTotal = valueOne - valueTwo;
+                break;
+            }
+            case 3: {
+                this.valueTotal = valueOne * valueTwo;
+                break;
+            }
+            case 4: {
+                this.valueTotal = valueOne / valueTwo;
+                break;
+            }
         }
+        this.displayValue.setText(String.valueOf(this.valueTotal));
     }
 
-    public void off (View v){
-        finish();
-    }
 }

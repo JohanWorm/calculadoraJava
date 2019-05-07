@@ -24,7 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:gravity="right"
-        android:text="Mostrar operación"
+        android:text=""
         android:textSize="30sp"
         tools:layout_editor_absoluteY="115dp" />
 
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:gravity="left"
-        android:text="Se describiran los resultados"
+        android:text=""
         android:textSize="45dp"
         tools:layout_editor_absoluteY="223dp" />
 
@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="1"
+                android:onClick="buttonActionOne"
                 android:textSize="45dp" />
 
             <Button
@@ -64,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="2"
+                android:onClick="buttonActionTwo"
                 android:textSize="45dp" />
 
             <Button
@@ -72,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="3"
+                android:onClick="buttonActionThree"
                 android:textSize="45dp" />
 
             <Button
@@ -79,6 +82,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="*"
+                android:onClick="buttonActionMultiplication"
                 android:textSize="45dp" />
 
         </TableRow>
@@ -93,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="4"
+                android:onClick="buttonActionFour"
                 android:textSize="45dp" />
 
             <Button
@@ -101,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="5"
+                android:onClick="buttonActionFive"
                 android:textSize="45dp" />
 
             <Button
@@ -109,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="6"
+                android:onClick="buttonActionSix"
                 android:textSize="45dp" />
 
             <Button
@@ -116,6 +123,7 @@
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:text="/"
+                android:onClick="buttonActionDivision"
                 android:textSize="45dp" />
         </TableRow>
 
@@ -129,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="7"
+                android:onClick="buttonActionSeven"
                 android:textSize="45dp" />
 
             <Button
@@ -137,6 +146,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="8"
+                android:onClick="buttonActionEight"
                 android:textSize="45dp" />
 
             <Button
@@ -145,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="9"
+                android:onClick="buttonActionNine"
                 android:textSize="45dp" />
 
             <Button
@@ -152,6 +163,7 @@
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:text="-"
+                android:onClick="buttonActionSubtraction"
                 android:textSize="45dp" />
         </TableRow>
 
@@ -165,6 +177,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="C"
+                android:onClick="buttonActionErase"
                 android:textSize="45dp" />
 
             <Button
@@ -173,6 +186,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0"
+                android:onClick="buttonActionZero"
                 android:textSize="45dp" />
 
             <Button
@@ -181,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="="
+                android:onClick="buttonActionEqual"
                 android:textSize="45dp" />
 
             <Button
@@ -188,6 +203,7 @@
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:text="+"
+                android:onClick="buttonActionAddition"
                 android:textSize="45dp" />
         </TableRow>
 
